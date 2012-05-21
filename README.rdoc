@@ -1,6 +1,22 @@
 Better STI with PostgreSQL's Hstore
 
-1. Install PostgreSQL (Homebrew recommended) and create a new database
+Why PostgreSQL over MySQL?
+- every database is a separate instance (MySQL has all databases under a single instance.)
+- user-defined data types with validation
+- no worries of Oracle becoming bad guys
+- referential integrity
+- better optimization
+- better EXPLAIN
+- won't LET you use MyISAM (MyISAM == corrupted tables)
+- faster with InnoDB
+- seamless uploading to Heroku
+- supports data check constraints
+
+"I have been involved in many MySQL to PosgreSQL migrations/re-platformings, but never the reverse." - Paul Gallagher
+
+
+
+1. Install PostgreSQL (Homebrew recommended) and create a new database, etc.
 2. Create new Rails app: rails new <app_name> --database=postgresql
 3. In Gemfile, add this line: gem 'activerecord-postgres-hstore'
 4. In terminal, run this code: rails g hstore:setup
