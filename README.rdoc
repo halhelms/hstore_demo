@@ -1,0 +1,19 @@
+Better STI with PostgreSQL's Hstore
+
+1. Install PostgreSQL (Homebrew recommended) and create a new database
+2. Create new Rails app: rails new <app_name> --database=postgresql
+3. In Gemfile, add this line: gem 'activerecord-postgres-hstore'
+4. In terminal, run this code: rails g hstore:setup
+5. In terminal, run this code: rake db:migrate
+6. Now, to create the single table, create a migration:
+  rails g model Machine manufacturer weight:integer type:string name:string properties:hstore
+  execute "CREATE INDEX machines_properties ON machines USING GIN( properties )"
+7. In terminal, run this code: rake db:migrate
+8. Create property_hash.rb module (Examine)
+9. Add "include PropertyHash" and "after_create :setup" to machine.rb
+10.Create vehicle.rb (Examine)
+11.Create powered_vehicle.rb (Examine)
+12.Create car.rb (Examine)
+13.Explore with pry
+
+Code available git@github.com:halhelms/hstore_demo.git
